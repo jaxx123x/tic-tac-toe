@@ -1,3 +1,4 @@
+//GENERAL FUNCTION FOR CREATING A NEW GAME
 function createGame(player1, player2) {
     
     return {
@@ -9,6 +10,7 @@ function createGame(player1, player2) {
     }   
 }
 
+//BOARD UPDATE FUNCTION
 function gameFlow(moves, board, position) {    //game.moves / game.board / 0 1 2 3 etc
     if (board[position] === "") {
     if (moves % 2 == 0) {
@@ -23,6 +25,7 @@ function gameFlow(moves, board, position) {    //game.moves / game.board / 0 1 2
     else return;
 }
 
+//WINNER CHECKING 
 function checkWinner(game) {
     
     const winCombs = [
@@ -31,22 +34,30 @@ function checkWinner(game) {
         [0, 4, 8], [2, 4, 6]
     ];
 
+  
+
+    //if one combination matches, reset game board and game moves & update score.
     winCombs.forEach(comb => {
         if (game.board[comb[0]] === game.board[comb[1]] && game.board[comb[0]] === game.board[comb[2]] && game.board[comb[0]] !== "") {
-            game.board = ["", "", "", "", "", "", "", "", ""];
+            game.board = ["", "", "", "", "", "", "", "", ""];   
             game.moves = 0;
             
-            alert('stop');
+           
         }
     });
+
+    
 }
 
+
+//HOPEFULLY THIS IIFE WILL HANDLE WHOLE DOM
 const events = (function () {
     const btn = document.querySelector("#button");
     const squares = document.querySelectorAll(".table-square");
     let currentGame;
-
-        btn.addEventListener("click", (event) => {
+        
+        //THIS WILL CALL --CREATE GAME FUNCTION-- ON THE BASIS OF USER INPUT (<FORM> INPUT).
+        btn.addEventListener("click", (event) => {      
             event.preventDefault();
             let p1Name = document.getElementById("player1").value;
             let p2Name = document.getElementById("player2").value;
@@ -54,7 +65,8 @@ const events = (function () {
             currentGame = game;
             console.log(game);
         })
-
+        
+        //THIS WILL HANDLE DOOM UPDATE & WILL UPDATE THE GAME ON THE BASIS OF USER INPUT (i.e each square).
         squares.forEach(square => {
             square.addEventListener("click", (event) => {
                 let id = event.target.id;
@@ -62,8 +74,9 @@ const events = (function () {
                 gameFlow(currentGame.moves, currentGame.board, id);
                 if (currentGame.moves % 2 === 0) {square.textContent = "X"};
                 if (currentGame.moves % 2 !== 0) {square.textContent = "O"};
-                checkWinner(currentGame);
+                
                 currentGame.moves++;
+                checkWinner(currentGame);
                 }
                 console.log(currentGame);
             })
