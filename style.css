@@ -47,7 +47,18 @@ body {
     flex-direction: row;
 }
 
-.game-mode > .against-player, .against-computer {
+.game-mode > .against-computer, #button {
+    background-color: black;
+    color: white;
+    height: 35px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.next-round {
     background-color: black;
     color: white;
     height: 35px;

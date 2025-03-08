@@ -13,19 +13,22 @@
     </div> 
     <div class="content">
         <form>
-            <label for="player1">Player one:</label>
+            <label for="player1">Player one(X):</label>
             <input type="text" id="player1" name="player1" required>
-            <label for="player2">Player two:</label>
+            <label for="player2">Player two(O):</label>
             <input type="text" id="player2" name="player2" required>
-            <input id="button" type="submit" value="Submit">
+            
         </form>
-        <div class="score">Score will be shown here.</div>
         <div class="game-mode">
             
-            <div class="against-player">Start VS/Human</div>
-            <div class="against-computer">Start VS/Computer</div>
+            <input id="button" type="submit" value="Play against human">
+            <div class="against-computer">Or... Start VS/Computer</div>
             
         </div>
+        
+        <div class="score">Score will be shown here.</div>
+        <div class="next-round">Next round</div>
+        
     <div class="game-table">
             <div class="table-square" id="0"></div>
             <div class="table-square" id="1"></div>
