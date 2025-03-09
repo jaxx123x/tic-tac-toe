@@ -63,6 +63,8 @@ function checkWinner(game) {
             game.board = ["", "", "", "", "", "", "", "", ""];   
             game.roundPlayed++;
         }
+
+
     });
 }
 
