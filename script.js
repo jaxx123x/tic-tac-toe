@@ -1,3 +1,5 @@
+//***********LOGIC FOR GAME AGAINST HUMANS */
+
 //GENERAL FUNCTION FOR CREATING A NEW GAME
 function createGame(player1, player2) {
     return {
@@ -10,10 +12,6 @@ function createGame(player1, player2) {
         roundPlayed: 0,
         winner: undefined
     }   
-}
-
-function createAI(player) {
-    return createGame(player, computer)
 }
 
 //BOARD UPDATE FUNCTION
@@ -45,7 +43,6 @@ function checkWinner(game) {
         if (game.board[comb[0]] === game.board[comb[1]] && game.board[comb[0]] === game.board[comb[2]] && game.board[comb[0]] !== "") {
             const winner = game.board[comb[0]]; //necesarry for score update.. 
             game.board = ["", "", "", "", "", "", "", "", ""];   
-            game.moves = 0;
             if (winner == "X") {
                 game.score[0]++;
                 game.winner = game.player1[0];
@@ -56,12 +53,13 @@ function checkWinner(game) {
             }
            game.gameOver = 1;
            game.roundPlayed++;
+           game.moves = (game.roundPlayed % 2 === 0) ? 0 : 1;
         }
         else if (game.winner === undefined && !game.board.includes("")) {
-            game.gameOver = 1;
             game.moves = 0;
             game.board = ["", "", "", "", "", "", "", "", ""];   
             game.roundPlayed++;
+            game.moves = (game.roundPlayed % 2 === 0) ? 0 : 1;
         }
 
 
@@ -87,7 +85,7 @@ const playerModeEvents = (function () {
             if (p1Name !== "" && p2Name !== ""){
             currentGame = game;
             btn.style.backgroundColor = "rgb(119, 16, 16)";
-            score.textContent = `${(currentGame.player1[0]).toUpperCase()} vs ${(currentGame.player1[1]).toUpperCase()}`
+            score.textContent = `${(currentGame.player1[0]).toUpperCase()} vs ${(currentGame.player2[0]).toUpperCase()}`
             console.log(game);
             }
             else {alert('plese fill player names')};
@@ -129,7 +127,19 @@ const playerModeEvents = (function () {
 })();
 
 
-/*const againstCompEvents = (function () {
+//***********LOGIC FOR GAME AGAINST COMPUTER */
+
+function createAiGame (player) {
+    return createGame(player, "computer");
+}
+
+function AiGameFlow () {
+    
+}
+
+
+
+const againstCompEvents = (function () {
     const compBtn = document.querySelector(".against-computer");
     const squares = document.querySelectorAll(".table-square");
     const score = document.querySelector(".score");
@@ -138,6 +148,12 @@ const playerModeEvents = (function () {
 
     compBtn.addEventListener("click", (event) => {
         event.preventDefault();
-        var game = createAI(you);
+        var game = createAiGame("you");
+        currentGame = game;
+        console.log(currentGame);
+        compBtn.style.backgroundColor = "rgb(119, 16, 16)";
+        score.textContent = `${(currentGame.player1[0]).toUpperCase()} vs ${(currentGame.player2[0]).toUpperCase()}`
     })
-})();*/
+
+
+})();
