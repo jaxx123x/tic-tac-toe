@@ -7,9 +7,9 @@ function createGame(player1, player2) {
         player1: [player1, "X"],
         player2: [player2, "O"],
         score: [0, 0],
-        moves: 0,
-        gameOver: 0,
-        roundPlayed: 0,
+        moves: 0,    
+        gameOver: 0,     
+        roundPlayed: 0,    
         winner: undefined
     }   
 }
@@ -18,12 +18,10 @@ function createGame(player1, player2) {
 function gameFlow(moves, board, position) {    //game.moves / game.board / 0 1 2 3 etc
     if (board[position] === "") {
     if (moves % 2 == 0) {
-        board[position] = "X";
-        
+        board[position] = "X"; 
     }
     else if (moves % 2 !== 0) {
-        board[position] = "O"
-        
+        board[position] = "O" 
     }
     }
     else return;
@@ -61,8 +59,6 @@ function checkWinner(game) {
             game.roundPlayed++;
             game.moves = (game.roundPlayed % 2 === 0) ? 0 : 1;
         }
-
-
     });
 }
 
@@ -70,7 +66,7 @@ function checkWinner(game) {
 
 //HOPEFULLY THIS IIFE WILL HANDLE WHOLE DOM
 const playerModeEvents = (function () {
-    const btn = document.querySelector("#button");
+    const btn = document.querySelector("#play-human");
     const squares = document.querySelectorAll(".table-square");
     const score = document.querySelector(".score");
     const nextRound = document.querySelector(".next-round");
@@ -89,9 +85,8 @@ const playerModeEvents = (function () {
             console.log(game);
             }
             else {alert('plese fill player names')};
-        })
-        
-        //THIS WILL HANDLE DOOM UPDATE & WILL UPDATE THE GAME ON THE BASIS OF USER INPUT (i.e each square).
+
+            //THIS WILL HANDLE DOOM UPDATE & WILL UPDATE THE GAME ON THE BASIS OF USER INPUT (i.e each square).
         squares.forEach(square => {
             square.addEventListener("click", (event) => {
                 if(currentGame.gameOver === 0) {
@@ -113,6 +108,7 @@ const playerModeEvents = (function () {
                 }
             })
         });
+        })
         
         //EVENT FOR RESETING GAME DATAS AND DOM AFTER WIN
         nextRound.addEventListener("click", () => {
@@ -122,38 +118,9 @@ const playerModeEvents = (function () {
             squares.forEach(square => {
                 square.textContent = "";
             });
-
         })
 })();
 
 
-//***********LOGIC FOR GAME AGAINST COMPUTER */
-
-function createAiGame (player) {
-    return createGame(player, "computer");
-}
-
-function AiGameFlow () {
-    
-}
 
 
-
-const againstCompEvents = (function () {
-    const compBtn = document.querySelector(".against-computer");
-    const squares = document.querySelectorAll(".table-square");
-    const score = document.querySelector(".score");
-    const nextRound = document.querySelector(".next-round");
-    let currentGame;
-
-    compBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        var game = createAiGame("you");
-        currentGame = game;
-        console.log(currentGame);
-        compBtn.style.backgroundColor = "rgb(119, 16, 16)";
-        score.textContent = `${(currentGame.player1[0]).toUpperCase()} vs ${(currentGame.player2[0]).toUpperCase()}`
-    })
-
-
-})();

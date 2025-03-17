@@ -1,81 +1,95 @@
-
-
-html{
-    background-color: rgb(255, 255, 255);
-    height: 100vh;
+* {
     margin: 0;
-    
+    padding: 0;
+    box-sizing: border-box !important;
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
+    display: table;
+    width: 100%;
+    height: 100%;
+    background-color: #1082b7;
+    color: #000;
+    line-height: 1.6;
+    position: relative;
+    font-family: sans-serif;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    margin: 0;
-    background-color: rgb(171, 171, 62);
+    gap: 25px;
 }
 
+
+
 .header {
-    background-color: black;
-    color: white;
-    justify-content: center;
-    align-items: flex-start;
+    width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .content {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-form {
+    display: flex;
+    flex-direction: column;
 }
 
 .game-table {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    width: 300px;
-    height: 300px;
-    border: 1px solid black;
+    grid-template-columns: repeat(3, 75px);
+    grid-template-rows: repeat(3, 75px);
+    background-color: #536d9f;
+}
+
+
+.table-square {
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    color: white;
+}
+
+button {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    height: 30px;
+    background-color: #315290;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+}
+
+button:hover {
+    background-color: #536d9f;
+    transform: scale(1.1);
    
 }
 
 .game-mode {
+    gap: 15px;
     display: flex;
-    gap: 20px;
-    flex-direction: row;
 }
 
-.game-mode > .against-computer, #button {
-    background-color: black;
-    color: white;
-    height: 35px;
-    width: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+.table-square:hover{
+    background-color: #4b6087;
+    transform: scale(1.05);
 }
 
-.next-round {
-    background-color: black;
-    color: white;
-    height: 35px;
-    width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+.score {
+    
+    margin: 10px;
+    padding: 10px;
+    
 }
-
-.table-square {
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 29px;
-    font-weight: bold;
-}
-
-
