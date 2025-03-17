@@ -84,7 +84,7 @@ const playerModeEvents = (function () {
             score.textContent = `${(currentGame.player1[0]).toUpperCase()} vs ${(currentGame.player2[0]).toUpperCase()}`
             console.log(game);
             }
-            else {alert('plese fill player names')};
+            else {alert('Completeaza campurile cu numele jucatorilor.')};
 
             //THIS WILL HANDLE DOOM UPDATE & WILL UPDATE THE GAME ON THE BASIS OF USER INPUT (i.e each square).
         squares.forEach(square => {
@@ -100,10 +100,10 @@ const playerModeEvents = (function () {
                 }
                 console.log(currentGame);
                 if (currentGame.gameOver === 1 && currentGame.winner !== undefined) {
-                    score.textContent = `${(currentGame.winner).toUpperCase()} won this round. Score is: ${(currentGame.player1[0]).toUpperCase()} ${currentGame.score[0]} - ${currentGame.score[1]} ${(currentGame.player2[0]).toUpperCase()}`;
+                    score.textContent = `${(currentGame.winner).toUpperCase()} a castigat runda. Scor: ${(currentGame.player1[0]).toUpperCase()} ${currentGame.score[0]} - ${currentGame.score[1]} ${(currentGame.player2[0]).toUpperCase()}`;
                 }
                 else if (currentGame.gameOver === 1 && currentGame.winner  === undefined){
-                    score.textContent = `Nobody won this round. Score is: ${(currentGame.player1[0]).toUpperCase()} ${currentGame.score[0]} - ${currentGame.score[1]} ${(currentGame.player2[0]).toUpperCase()}`;
+                    score.textContent = `Egalitate. Scor: ${(currentGame.player1[0]).toUpperCase()} ${currentGame.score[0]} - ${currentGame.score[1]} ${(currentGame.player2[0]).toUpperCase()}`;
                 }
                 }
             })
